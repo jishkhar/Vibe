@@ -299,24 +299,10 @@ To report security vulnerabilities, please email security@yourcompany.com. We wi
 - [API Reference](https://api-docs.yourcompany.com)
 - [Deployment Guide](https://deploy.yourcompany.com)
 
-### Community Support
-
-- [Issue Tracker](https://github.com/yourusername/lovable-clone/issues)
-- [Discussion Forum](https://github.com/yourusername/lovable-clone/discussions)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/lovable-clone)
-
-### Enterprise Support
-
-For enterprise customers, dedicated support is available through our [support portal](https://support.yourcompany.com).
-
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for complete terms and conditions.
 
-## Changelog
-
-See [CHANGELOG.md](CHANGELOG.md) for detailed release notes and version history.
-
 ---
 
-**Copyright © 2025 Your Company Name. All rights reserved.**
+**Copyright © 2025 k_jish. All rights reserved.**
