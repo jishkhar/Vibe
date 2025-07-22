@@ -11,7 +11,19 @@ export const messagesRouter = createTRPCRouter({
                 projectId: z.string().min(1, { message: "Project ID is required." }),
             }),
         )
-        .query(async ({ input }) => {
+        .query(async ({ input, ctx }) => {
+            // First verify the project belongs to the user
+            const project = await prisma.project.findUnique({
+                where: {
+                    id: input.projectId,
+                    userId: ctx.userId,
+                },
+            });
+
+            if (!project) {
+                throw new Error("Project not found or access denied.");
+            }
+
             const messages = await prisma.message.findMany({
                 where: {
                     projectId: input.projectId,
@@ -36,7 +48,19 @@ export const messagesRouter = createTRPCRouter({
                 projectId: z.string().min(1, { message: "Project ID is required." }),
             }),
         )
-        .mutation(async ({ input }) => {
+        .mutation(async ({ input, ctx }) => {
+            // First verify the project belongs to the user
+            const project = await prisma.project.findUnique({
+                where: {
+                    id: input.projectId,
+                    userId: ctx.userId,
+                },
+            });
+
+            if (!project) {
+                throw new Error("Project not found or access denied.");
+            }
+
             const createdMessage = await prisma.message.create({
                 data: {
                     projectId: input.projectId,

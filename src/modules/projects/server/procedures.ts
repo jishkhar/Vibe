@@ -7,8 +7,11 @@ import { TRPCError } from "@trpc/server";
 
 export const projectsRouter = createTRPCRouter({
     getMany: baseProcedure
-        .query(async () => {
+        .query(async ({ ctx }) => {
             const projects = await prisma.project.findMany({
+                where: {
+                    userId: ctx.userId,
+                },
                 orderBy: {
                     updatedAt: "desc",
                 },
@@ -21,10 +24,11 @@ export const projectsRouter = createTRPCRouter({
         .input(z.object({
             id: z.string().min(1, { message: "Id is required." }),
         }))
-        .query(async ({ input }) => {
+        .query(async ({ input, ctx }) => {
             const existingProject = await prisma.project.findUnique({
                 where: {
                     id: input.id,
+                    userId: ctx.userId,
                 },
             });
 
@@ -43,12 +47,23 @@ export const projectsRouter = createTRPCRouter({
                     .max(10000, { message: "Value is too long." }),
             }),
         )
-        .mutation(async ({ input }) => {
+        .mutation(async ({ input, ctx }) => {
+            // Ensure user exists (upsert)
+            await prisma.user.upsert({
+                where: { id: ctx.userId },
+                update: {},
+                create: {
+                    id: ctx.userId,
+                    externalId: ctx.userId,
+                },
+            });
+
             const createdProject = await prisma.project.create({
                 data: {
                     name: generateSlug(2, {
                         format: "kebab",
                     }),
+                    userId: ctx.userId,
                     messages: {
                         create: {
                             content: input.value,
