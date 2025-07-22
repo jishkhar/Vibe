@@ -110,8 +110,8 @@ export const MessageForm = ({ projectId }: Props) => {
                         {isPending ? (
                             <Loader2Icon className="size-4 animate-spin" />
                         ) : (
-                            <ArrowUpIcon className="size-7 pl-3"/>
-                        )};
+                            <ArrowUpIcon className="size-4"/>
+                        )}
                     </Button>
                 </div>
             </form>

@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormField } from "@/components/ui/form";
 import { useRouter } from "next/navigation";
 import { PROJECT_TEMPLATES } from "../../constants";
+import { useClerk } from "@clerk/nextjs";
 
 const formSchema = z.object({
     value: z.string()
@@ -25,6 +26,7 @@ export const ProjectForm = () => {
     const router = useRouter();
 
     const trpc = useTRPC();
+    const clerk = useClerk();
     const queryClient = useQueryClient();
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -43,8 +45,11 @@ export const ProjectForm = () => {
             //TODO: Invalildate usage status
         },
         onError: (error) => {
-            //Redirect to pricing page if specific error
             toast.error(error.message);
+
+            if(error.data?.code === "UNAUTHORIZED"){
+                router.push("/sign-in");
+            }
         }
     }))
 
@@ -117,8 +122,8 @@ export const ProjectForm = () => {
                             {isPending ? (
                                 <Loader2Icon className="size-4 animate-spin" />
                             ) : (
-                                <ArrowUpIcon className="size-7 pl-3"/>
-                            )};
+                                <ArrowUpIcon className="size-4"/>
+                            )}
                         </Button>
                     </div>
                 </form>
