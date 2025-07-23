@@ -1,6 +1,6 @@
 "use client";
 
-import React, { act, Suspense, useState } from "react";
+import React, { Suspense, useState } from "react";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import { MessagesContainer } from "../components/messages-container";
 import { Fragment } from "@/generated/prisma";

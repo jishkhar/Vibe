@@ -21,8 +21,7 @@ import {
     DropdownMenuSubContent, 
     DropdownMenuSubTrigger, 
     DropdownMenuTrigger, 
-} from "@/components/ui/dropdown-menu"; 
-import { Dropdown } from "react-day-picker";
+} from "@/components/ui/dropdown-menu";
 
 interface Props {
     projectId: string;

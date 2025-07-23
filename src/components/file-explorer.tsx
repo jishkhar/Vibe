@@ -1,4 +1,4 @@
-import { Copy, CopyCheckIcon, CopyIcon } from "lucide-react";
+import { CopyCheckIcon, CopyIcon } from "lucide-react";
 import { useState, useMemo, useCallback, Fragment } from "react";
 import { Button } from "./ui/button";
 import { Hint } from "./hint";
@@ -14,7 +14,6 @@ import {
 } from "./ui/breadcrumb";
 import { convertFilesToTreeItems } from "@/lib/utils";
 import { TreeView } from "./tree-view";
-import { set } from "date-fns";
 
 type FileCollection = { [path: string]: string };
 
