@@ -47,7 +47,7 @@ export const ProjectHeader = ({ projectId }: Props) => {
                     >
                         <Image
                             src="/logo.svg"
-                            alt="Vibe"
+                            alt="Zenkai"
                             width={18}
                             height={18}
                         />

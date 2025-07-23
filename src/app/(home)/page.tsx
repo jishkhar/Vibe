@@ -9,14 +9,14 @@ const page = () => {
         <div className="flex flex-col items-center">
           <Image 
             src="/logo.svg"
-            alt="Vibe"
+            alt="Zenkai"
             width={60}
             height={60}
             className="hidden md:block"
           />
         </div>
         <h1 className="text-2xl md:text-5xl font-bold text-center">
-          Build something with Vibe
+          Build something with Zenkai
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground text-center">
           Create Apps and Webistes by chatting with AI.

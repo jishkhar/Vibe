@@ -22,11 +22,11 @@ export const Navbar = () => {
                 <Link href="/" className="flex items-center gap-2">
                     <Image
                         src="/logo.svg"
-                        alt="Vibe"
+                        alt="Zenkai"
                         width={24}
                         height={24}
                     />
-                    <span className="font-semibold text-lg">Vibe</span>
+                    <span className="font-semibold text-lg">Zenkai</span>
                 </Link>
 
                 <SignedOut>
