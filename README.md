@@ -11,13 +11,14 @@ An AI-powered code generation platform that creates interactive web applications
 - **Responsive Design**: Modern UI with dark mode support
 - **Project Management**: Save and manage your generated projects
 - **User Authentication**: Secure sign-in/sign-up with Clerk
+- **Billing Integration**: Subscription management and payment processing via Clerk
 - **Background Processing**: Reliable job execution with Inngest
 
 ## 🛠️ Tech Stack
 
 - **Framework**: [Next.js 15](https://nextjs.org/) with TypeScript
 - **Database**: [NeonDB](https://neon.tech/) with [Prisma](https://www.prisma.io/) ORM
-- **Authentication**: [Clerk](https://clerk.com/) for user management and auth
+- **Authentication**: [Clerk](https://clerk.com/) for user management, auth, and billing
 - **Deployment**: [Vercel](https://vercel.com/) for seamless CI/CD
 - **Background Jobs**: [Inngest](https://www.inngest.com/) for reliable job processing
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) with custom design system
@@ -82,6 +83,7 @@ sandbox-templates/
    Update `.env` with your configuration:
    - **Database**: NeonDB connection string
    - **Authentication**: Clerk publishable and secret keys
+   - **Billing**: Clerk webhook endpoints and billing configuration
    - **Background Jobs**: Inngest event key and signing key
    - **Deployment**: Vercel environment variables (if deploying)
 
@@ -105,7 +107,7 @@ sandbox-templates/
 1. **Connect your repository** to Vercel
 2. **Configure environment variables** in Vercel dashboard:
    - Database connection string (NeonDB)
-   - Clerk authentication keys
+   - Clerk authentication and billing keys
    - Inngest configuration
 3. **Deploy** - Vercel will automatically build and deploy your application
 
@@ -120,6 +122,7 @@ DATABASE_URL="your-neondb-connection-string"
 # Authentication (Clerk)
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="your-clerk-publishable-key"
 CLERK_SECRET_KEY="your-clerk-secret-key"
+CLERK_WEBHOOK_SECRET="your-clerk-webhook-secret"
 
 # Background Jobs (Inngest)
 INNGEST_EVENT_KEY="your-inngest-event-key"
@@ -201,7 +204,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## 🙏 Acknowledgments
 
 - [NeonDB](https://neon.tech/) for serverless PostgreSQL database
-- [Clerk](https://clerk.com/) for seamless user authentication
+- [Clerk](https://clerk.com/) for seamless user authentication and billing management
 - [Vercel](https://vercel.com/) for effortless deployment and hosting
 - [Inngest](https://www.inngest.com/) for reliable background job processing
 - [Radix UI](https://www.radix-ui.com/) for accessible component primitives
