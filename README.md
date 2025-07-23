@@ -1,4 +1,4 @@
-# Vibe
+# Zenkai
 
 An AI-powered code generation platform that creates interactive web applications with real-time preview capabilities.
 
@@ -58,7 +58,7 @@ sandbox-templates/
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd vibe
+   cd zenkai
    ```
 
 2. **Install dependencies**
