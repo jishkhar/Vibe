@@ -10,11 +10,16 @@ An AI-powered code generation platform that creates interactive web applications
 - **File Explorer**: Browse and edit generated project files with syntax highlighting
 - **Responsive Design**: Modern UI with dark mode support
 - **Project Management**: Save and manage your generated projects
+- **User Authentication**: Secure sign-in/sign-up with Clerk
+- **Background Processing**: Reliable job execution with Inngest
 
 ## 🛠️ Tech Stack
 
 - **Framework**: [Next.js 15](https://nextjs.org/) with TypeScript
-- **Database**: [Prisma](https://www.prisma.io/) ORM
+- **Database**: [NeonDB](https://neon.tech/) with [Prisma](https://www.prisma.io/) ORM
+- **Authentication**: [Clerk](https://clerk.com/) for user management and auth
+- **Deployment**: [Vercel](https://vercel.com/) for seamless CI/CD
+- **Background Jobs**: [Inngest](https://www.inngest.com/) for reliable job processing
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) with custom design system
 - **UI Components**: Custom component library with [Radix UI](https://www.radix-ui.com/)
 - **Code Highlighting**: [Prism.js](https://prismjs.com/) for syntax highlighting
@@ -51,7 +56,10 @@ sandbox-templates/
 
 - Node.js 18+ 
 - npm or yarn
-- PostgreSQL database
+- [NeonDB](https://neon.tech/) database (or PostgreSQL compatible)
+- [Clerk](https://clerk.com/) account for authentication
+- [Vercel](https://vercel.com/) account for deployment (optional)
+- [Inngest](https://www.inngest.com/) account for background jobs
 
 ### Installation
 
@@ -71,7 +79,11 @@ sandbox-templates/
    cp .env.example .env
    ```
    
-   Update `.env` with your database URL and other required variables.
+   Update `.env` with your configuration:
+   - **Database**: NeonDB connection string
+   - **Authentication**: Clerk publishable and secret keys
+   - **Background Jobs**: Inngest event key and signing key
+   - **Deployment**: Vercel environment variables (if deploying)
 
 4. **Set up the database**
    ```bash
@@ -85,6 +97,34 @@ sandbox-templates/
    ```
 
    Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 🚀 Deployment
+
+### Vercel Deployment
+
+1. **Connect your repository** to Vercel
+2. **Configure environment variables** in Vercel dashboard:
+   - Database connection string (NeonDB)
+   - Clerk authentication keys
+   - Inngest configuration
+3. **Deploy** - Vercel will automatically build and deploy your application
+
+### Environment Variables
+
+Required environment variables for production:
+
+```bash
+# Database
+DATABASE_URL="your-neondb-connection-string"
+
+# Authentication (Clerk)
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="your-clerk-publishable-key"
+CLERK_SECRET_KEY="your-clerk-secret-key"
+
+# Background Jobs (Inngest)
+INNGEST_EVENT_KEY="your-inngest-event-key"
+INNGEST_SIGNING_KEY="your-inngest-signing-key"
+```
 
 ## 🎨 UI Components
 
@@ -160,6 +200,10 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## 🙏 Acknowledgments
 
+- [NeonDB](https://neon.tech/) for serverless PostgreSQL database
+- [Clerk](https://clerk.com/) for seamless user authentication
+- [Vercel](https://vercel.com/) for effortless deployment and hosting
+- [Inngest](https://www.inngest.com/) for reliable background job processing
 - [Radix UI](https://www.radix-ui.com/) for accessible component primitives
 - [Lucide](https://lucide.dev/) for beautiful icons
 - [Prism.js](https://prismjs.com/) for syntax highlighting
