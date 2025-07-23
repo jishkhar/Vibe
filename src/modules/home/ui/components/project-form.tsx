@@ -15,6 +15,7 @@ import { Form, FormField } from "@/components/ui/form";
 import { useRouter } from "next/navigation";
 import { PROJECT_TEMPLATES } from "../../constants";
 import { useClerk } from "@clerk/nextjs";
+import { tr } from "date-fns/locale";
 
 const formSchema = z.object({
     value: z.string()
@@ -41,14 +42,20 @@ export const ProjectForm = () => {
             queryClient.invalidateQueries(
                 trpc.projects.getMany.queryOptions(),
             );
+            queryClient.invalidateQueries(
+                trpc.usage.status.queryOptions(),
+            )
             router.push(`/projects/${data.id}`);
-            //TODO: Invalildate usage status
         },
         onError: (error) => {
             toast.error(error.message);
 
             if(error.data?.code === "UNAUTHORIZED"){
                 router.push("/sign-in");
+            }
+
+            if(error.data?.code === "TOO_MANY_REQUESTS") {
+                router.push("/pricing");
             }
         }
     }))
